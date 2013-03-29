@@ -1,0 +1,28 @@
+﻿1.	修正 Global.asax 於 Session_Start Session_End 事件加入:
+		void Session_Start(object sender, EventArgs e) {
+		    EzWebCount.CountAdd();
+		    Session.Add("_newvs", 1);
+		}
+		
+		void Session_End(object sender, EventArgs e) {
+		    EzWebCount.CountRemove();
+		}
+
+
+2.	頁面加入 javscript 引用.
+		<script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
+		<script language="javascript" type="text/javascript" src="GetPageCount.ashx"></script>
+	加入標籤
+		<span id="web_count_online"></span>
+		<span id="web_count_total"></span>
+		<span id="web_count_day"></span> 這些會於執行後會被換成，目前線上、累計瀏覽、今日瀏覽人數 
+	使用範例參閱 DeployExample.htm
+
+
+3.	檔案說明.App_Data\CountDat.xml 計數器資料。
+
+
+4.	預設每日回產生一個 CountDatLog_yyyyMMdd.xml 的日紀錄，如果不需要日紀錄，請修正
+	App_Code\EzWebCount.cs 把 IsDoDayLog 改成 false 就好了。
+	
+5.	適用平台 asp.net 4.0 (C#)
