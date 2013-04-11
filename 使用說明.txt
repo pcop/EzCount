@@ -26,3 +26,6 @@
 	App_Code\EzWebCount.cs 把 IsDoDayLog 改成 false 就好了。
 	
 5.	適用平台 asp.net 4.0 (C#)
+
+
+6.  不適用於需要多種計數器的複雜狀況
